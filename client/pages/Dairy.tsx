@@ -245,42 +245,42 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
     // --- LOCK SCREEN ---
     if (!isAuthenticated) {
         return (
-            <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100 p-6">
-                <div className="bg-white p-6 rounded-xl shadow-md w-full max-w-md text-center">
-                    <Lock className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+            <div className="min-h-screen flex flex-col justify-center items-center bg-[#111827] p-6">
+                <div className="bg-[#1F2937] p-6 rounded-xl shadow-md w-full max-w-md text-center border border-white/10">
+                    <Lock className="w-12 h-12 text-[#2DD4BF] mx-auto mb-4" />
                     {!savedPassword ? (
                         <>
-                            <h2 className="text-xl font-bold mb-2">Set Diary Password</h2>
+                            <h2 className="text-xl font-bold mb-2 text-gray-100">Set Diary Password</h2>
                             <input
                                 type="password"
-                                className="w-full border p-2 rounded mb-3"
+                                className="w-full border border-gray-600 bg-[#111827] text-white p-2 rounded mb-3"
                                 placeholder="Create password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
                             />
                             <button
                                 onClick={handleSetPassword}
-                                className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
+                                className="w-full bg-[#6366F1] text-white py-2 rounded hover:bg-[#4F46E5]"
                             >
                                 Save Password
                             </button>
-                            <p className="text-sm text-gray-500 mt-3">
+                            <p className="text-sm text-gray-400 mt-3">
                                 This password is stored locally in your browser.
                             </p>
                         </>
                     ) : (
                         <>
-                            <h2 className="text-xl font-bold mb-2">Enter Password</h2>
+                            <h2 className="text-xl font-bold mb-2 text-gray-100">Enter Password</h2>
                             <input
                                 type="password"
-                                className="w-full border p-2 rounded mb-3"
+                                className="w-full border border-gray-600 bg-[#111827] text-white p-2 rounded mb-3"
                                 placeholder="Password"
                                 value={passwordInput}
                                 onChange={(e) => setPasswordInput(e.target.value)}
                             />
                             <button
                                 onClick={handleLogin}
-                                className="w-full bg-purple-600 text-white py-2 rounded hover:bg-purple-700"
+                                className="w-full bg-[#6366F1] text-white py-2 rounded hover:bg-[#4F46E5]"
                             >
                                 Unlock Diary
                             </button>
@@ -293,7 +293,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
 
     // --- MAIN UI ---
     return (
-        <div className="min-h-screen bg-gray-50 font-sans p-4 md:p-8">
+        <div className="min-h-screen bg-[#111827] font-sans p-4 md:p-8">
             <div className="max-w-4xl mx-auto">
                 <header className="text-center mb-10">
                     <h1 className="text-4xl font-extrabold text-purple-700 flex items-center justify-center gap-3">
@@ -309,14 +309,14 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                     <div />
                     <button
                         onClick={handleLogout}
-                        className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-black text-sm"
+                        className="bg-[#2DD4BF] text-[#111827] px-4 py-2 rounded hover:bg-[#14B8A6] text-sm"
                     >
                         Lock Diary
                     </button>
                 </div>
 
                 {/* New Entry Form */}
-                <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg border border-purple-200 mb-10">
+                <div className="bg-[#1F2937] p-6 md:p-8 rounded-2xl shadow-lg border border-white/10 mb-10">
                     <h2 className="text-2xl font-semibold mb-5 text-gray-700 border-b pb-3 flex items-center gap-2">
                         <Zap className="w-6 h-6 text-pink-500" /> New Reflection
                     </h2>
@@ -377,7 +377,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                         <button
                             onClick={handleSaveEntry}
                             disabled={!text.trim()}
-                            className="flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-purple-700 disabled:opacity-50"
+                            className="flex items-center gap-2 bg-[#6366F1] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#4F46E5] disabled:opacity-50"
                         >
                             <Save className="w-5 h-5" />
                             Save Entry
@@ -392,7 +392,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                     </h2>
 
                     {entries.length === 0 ? (
-                        <div className="text-center text-gray-500 p-10 border-2 border-dashed border-purple-300 rounded-xl bg-purple-50">
+                        <div className="text-center text-gray-400 p-10 border-2 border-dashed border-[#6366F1] rounded-xl bg-[#0F172A]">
                             <BookOpen className="w-8 h-8 mx-auto mb-3 text-purple-400" />
                             <p className="text-lg font-medium">
                                 Your journal is empty. Start writing your thoughts!
@@ -403,7 +403,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                             {entries.map((entry) => (
                                 <div
                                     key={entry.id}
-                                    className="bg-white p-5 rounded-xl shadow border hover:shadow-lg transition-all"
+                                    className="bg-[#1F2937] p-5 rounded-xl shadow border border-white/10 hover:shadow-lg transition-all"
                                 >
                                     <div className="flex justify-between items-start mb-2">
                                         <h3 className="text-xl font-bold text-gray-800 line-clamp-1">

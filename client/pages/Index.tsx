@@ -33,26 +33,19 @@ export default function Index() {
   }
 
   return (
-  <div className="min-h-screen w-full overflow-x-hidden bg-graypurple-200">
+    <div className=" bg-[#111827] h-screen  overflow-hidden">
+      {/* Sidebar */}
+      <Sidenav user={user} />
 
-    {/* Full-width container (no max-width) */}
-    <div className="w-full px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-
-      {/* Vertical layout */}
-      <div className="flex flex-col gap-8 w-full">
-
-        {/* Sidebar on top, full width */}
-        <Sidenav user={user} />
-
-        {/* Content takes entire screen width */}
+      {/* Main content with left margin for fixed sidebar */}
+      <div className="  bg-[#111827] ml-80 h-[calc(100vh-64px)] mt-16 px-4 sm:px-6 lg:px-8 py-8 md:py-12 overflow-y-auto overflow-x-hidden">
+        {/* Content */}
         <div className="w-full space-y-12">
           <RoadmapSection />
           <JobFinderSection />
         </div>
-
       </div>
     </div>
-  </div>
-);
+  );
 
 }

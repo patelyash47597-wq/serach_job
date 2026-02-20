@@ -117,23 +117,25 @@ export const RoadmapSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full py-12">
+    <section className="w-full py-16 bg-[#111827]">
+
       <div className="max-w-[1400px] mx-auto px-4">
-        <h2 className="font-serif font-bold text-3xl md:text-4xl text-sidebar-foreground mb-8">
+        <h2 className="font-sans font-bold text-3xl md:text-4xl text-white mb-10 drop-shadow-[0_0_15px_#2DD4BF]">
+
           Roadmaps
         </h2>
 
         {/* Tabs */}
-        <div className="flex gap-8 border-b border-secondary mb-8">
+        <div className="flex gap-10 border-b border-white/10 mb-10">
+
           {["roles", "skills"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab as "roles" | "skills")}
-              className={`pb-3 font-semibold text-lg transition-colors ${
-                activeTab === tab
-                  ? "text-primary border-b-2 border-primary"
-                  : "text-sidebar-accent-foreground hover:text-sidebar-foreground"
-              }`}
+              className={`pb-3 text-lg transition-all ${activeTab === tab
+                ? "font-bold text-[#2DD4BF] border-b-2 border-[#2DD4BF]"
+                : "font-medium text-gray-400 hover:text-white"
+                }`}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
@@ -141,38 +143,48 @@ export const RoadmapSection: React.FC = () => {
         </div>
 
         {/* Carousel */}
-       <div className="w-full flex-shrink-0 mt-10 px-4">  {/* Added margin-top + horizontal padding */}
-  <Slider {...sliderSettings}>
-    {roadmaps.map((roadmap, idx) => (
-      <div key={idx} className="px-6">  {/* Increased gap between cards */}
-        <div
-          onClick={() => navigate(roadmap.path)}
-          className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl hover:scale-105 transition-transform cursor-pointer"
-        >
-          <div
-            className={`h-52 bg-gradient-to-br ${roadmap.bgColor} relative`}  
-          >
-            <img
-              src={roadmap.image}
-              alt={roadmap.title}
-              className="w-full h-full object-cover opacity-80 rounded-t-xl"  
-            />
-          </div>
+        <div className="w-full flex-shrink-0 mt-10 px-4">
+          <Slider {...sliderSettings}>
+            {roadmaps.map((roadmap, idx) => (
+              <div key={idx} className="px-6">
+                <div
+                  onClick={() => navigate(roadmap.path)}
+                  className="
+bg-[#1F2937]
+rounded-3xl
+border border-[#2DD4BF]
+shadow-[0_0_20px_rgba(45,212,191,0.3)]
+overflow-hidden
+hover:shadow-[0_0_40px_rgba(99,102,241,0.6)]
+transition-all duration-300
+cursor-pointer
+transform hover:-translate-y-2"
 
-          <div className="p-5"> {/* Increased padding for cleaner UI */}
-            <h3 className="font-serif font-bold text-lg text-sidebar-foreground mb-2">
-              {roadmap.icon} {roadmap.title}
-            </h3>
-            <p className="text-sm text-sidebar-accent-foreground leading-relaxed">
-              {roadmap.description}
-            </p>
-          </div>
+                >
+                  <div
+                    className={`h-52 bg-gradient-to-br ${roadmap.bgColor} relative`}
+                  >
+                    <img
+                      src={roadmap.image}
+                      alt={roadmap.title}
+                      className="w-full h-full object-cover opacity-70 rounded-t-3xl"
+                    />
+                  </div>
+
+                  <div className="p-5">
+                    <h3 className="font-serif font-bold text-lg text-white mb-2">
+                      {roadmap.icon} {roadmap.title}
+                    </h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {roadmap.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
       </div>
-    ))}
-  </Slider>
-</div>
-    </div>
     </section>
   );
 };

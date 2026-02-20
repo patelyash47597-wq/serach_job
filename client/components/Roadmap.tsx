@@ -66,9 +66,10 @@ export default function Roadmap({ yamlFile }: { yamlFile: string }) {
   const getNodeById = (id: string) => positionedNodes.find((n) => n.id === id)!;
 
   return (
-    <div className="w-full h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-600 flex items-center justify-center ">
-      {/* Title */}
-      <h1 className=" top-2  text-6xl font-bold text-slate-100 text-center left-1/2 drop-shadow-sm">
+    <div className="w-full h-screen bg-[#111827] flex items-center justify-center">
+
+      <h1 className="top-4 text-5xl font-bold text-white text-center drop-shadow-[0_0_20px_#2DD4BF]">
+
         {data.title}
       </h1>
 
@@ -87,7 +88,8 @@ export default function Roadmap({ yamlFile }: { yamlFile: string }) {
             orient="auto"
             markerUnits="strokeWidth"
           >
-            <path d="M0,0 L0,6 L9,3 z" fill="#94a3b8" />
+            <path d="M0,0 L0,6 L9,3 z" fill="#2DD4BF" />
+
           </marker>
         </defs>
 
@@ -98,7 +100,8 @@ export default function Roadmap({ yamlFile }: { yamlFile: string }) {
           if (!from || !to) return null;
 
           const dashed = edge.style === "dashed";
-          const color = dashed ? "#FFA500" : "#94a3b8";
+          const color = dashed ? "#6366F1" : "#2DD4BF";
+
 
           return (
             <line
@@ -140,13 +143,12 @@ export default function Roadmap({ yamlFile }: { yamlFile: string }) {
             (edge) => edge.style === "dashed" && edge.to === node.id
           );
 
-          const fillColor = isDashedConnected
-            ? "#fed7aa"
+          const fillColor = selectedNode?.id === node.id
+            ? "#2DD4BF"
             : node.parent
-            ? "#bae6fd"
-            : selectedNode?.id === node.id
-            ? "#fde68a"
-            : "#fef08a";
+              ? "#1F2937"
+              : "#111827";
+
 
           return (
             <g
@@ -158,18 +160,20 @@ export default function Roadmap({ yamlFile }: { yamlFile: string }) {
               <rect
                 width={boxWidth}
                 height={boxHeight}
-                rx="6"
+                rx="10"
                 fill={fillColor}
-                stroke="#000"
-                strokeWidth={selectedNode?.id === node.id ? 2.5 : 1.5}
+                stroke="#2DD4BF"
+                strokeWidth={selectedNode?.id === node.id ? 3 : 1.5}
               />
+
               <text
                 x={boxWidth / 2}
                 y={boxHeight / 2 + 6}
                 textAnchor="middle"
                 fontWeight="bold"
                 fontSize="20px"
-                fill="#1e293b"
+                fill="#E5E7EB"
+
               >
                 {node.label}
               </text>

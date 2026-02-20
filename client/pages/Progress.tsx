@@ -61,16 +61,16 @@ export default function ProgressReport() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-100 p-8 flex flex-col items-center">
-            <h1 className="text-4xl font-bold text-purple-700 mb-6">
+        <div className="min-h-screen bg-[#111827] p-8 flex flex-col items-center">
+            <h1 className="text-4xl font-bold text-[#2DD4BF] mb-6">
                 📊 Your Quiz Progress Report
             </h1>
 
             <div className="mb-6">
                 <button
                     className={`px-4 py-2 rounded-l-lg ${viewType === "line"
-                        ? "bg-purple-600 text-white"
-                        : "bg-gray-200 text-gray-800"
+                        ? "bg-[#6366F1] text-white"
+                        : "bg-[#1F2937] text-gray-300"
                         }`}
                     onClick={() => setViewType("line")}
                 >
@@ -79,8 +79,8 @@ export default function ProgressReport() {
 
                 <button
                     className={`px-4 py-2 rounded-r-lg ${viewType === "bar"
-                        ? "bg-purple-600 text-white"
-                        : "bg-gray-200 text-gray-800"
+                        ? "bg-[#6366F1] text-white"
+                        : "bg-[#1F2937] text-gray-300"
                         }`}
                     onClick={() => setViewType("bar")}
                 >
@@ -88,7 +88,7 @@ export default function ProgressReport() {
                 </button>
             </div>
 
-            <div className="bg-white shadow-2xl rounded-2xl p-6 w-full max-w-4xl">
+            <div className="bg-[#1F2937] shadow-2xl rounded-2xl p-6 w-full max-w-4xl border border-white/10">
                 {data.length > 0 ? (
                     <ResponsiveContainer width="100%" height={400}>
                         {viewType === "line" ? (
@@ -118,7 +118,7 @@ export default function ProgressReport() {
                         )}
                     </ResponsiveContainer>
                 ) : (
-                    <p className="text-gray-600 text-center">
+                    <p className="text-gray-400 text-center">
                         No quiz data found. Take some quizzes to view your progress 📘
                     </p>
                 )}

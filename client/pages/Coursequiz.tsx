@@ -369,9 +369,9 @@ export default function CourseQuiz() {
     // 🟢 Step 1: Course + Level Selection
     if (!start)
         return (
-            <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 p-4">
-                <div className="backdrop-blur-lg bg-white/40 shadow-2xl rounded-3xl p-10 max-w-lg w-full text-center border border-white/30 animate-fadeIn">
-                    <h1 className="text-4xl font-bold mb-8 text-indigo-700">
+            <div className="min-h-screen flex flex-col justify-center items-center bg-[#111827] p-4">
+                <div className="backdrop-blur-lg bg-[#1F2937]/80 shadow-2xl rounded-3xl p-10 max-w-lg w-full text-center border border-white/10 animate-fadeIn">
+                    <h1 className="text-4xl font-bold mb-8 text-[#2DD4BF]">
                         🎓 Start Your Quiz
                     </h1>
 
@@ -383,11 +383,11 @@ export default function CourseQuiz() {
                             <select
                                 value={course}
                                 onChange={(e) => setCourse(e.target.value)}
-                                className="w-full p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                className="w-full p-3 rounded-xl border border-gray-600 bg-[#111827] text-white shadow-sm focus:ring-2 focus:ring-[#6366F1] focus:outline-none"
                             >
                                 <option value="">-- Choose a Course --</option>
                                 {Object.keys(quizBank).map((c) => (
-                                    <option key={c} value={c} className="capitalize">
+                                    <option key={c} value={c} className="capitalize" >
                                         {c}
                                     </option>
                                 ))}
@@ -401,7 +401,7 @@ export default function CourseQuiz() {
                             <select
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
-                                className="w-full p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                                className="w-full p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none text-black"
                             >
                                 <option value="">-- Choose Difficulty --</option>
                                 <option value="easy">Easy</option>
@@ -412,7 +412,7 @@ export default function CourseQuiz() {
 
                         <button
                             onClick={handleStart}
-                            className="w-full mt-6 bg-indigo-600 text-white text-lg font-semibold py-3 rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg"
+                            className="w-full mt-6 bg-indigo-600 text-black text-lg font-semibold py-3 rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg"
                         >
                             🚀 Start Quiz
                         </button>
@@ -443,12 +443,12 @@ export default function CourseQuiz() {
 
     if (score !== null)
         return (
-            <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-200 via-purple-200 to-pink-200 p-4">
-                <div className="bg-white shadow-2xl rounded-3xl p-10 text-center max-w-xl w-full animate-fadeIn">
-                    <h2 className="text-3xl font-bold text-green-600 mb-4">
+            <div className="min-h-screen flex items-center justify-center bg-[#111827] p-4">
+                <div className="bg-[#1F2937] shadow-2xl rounded-3xl p-10 text-center max-w-xl w-full animate-fadeIn border border-white/10">
+                    <h2 className="text-3xl font-bold text-green-400 mb-4">
                         🎉 Quiz Completed!
                     </h2>
-                    <p className="text-xl mb-6">
+                    <p className="text-xl text-gray-300 mb-6">
                         You scored{" "}
                         <span className="font-bold">
                             {score} / {quiz.length}
@@ -460,7 +460,7 @@ export default function CourseQuiz() {
                             setCourse("");
                             setLevel("");
                         }}
-                        className="bg-indigo-600 text-white px-8 py-3 rounded-xl hover:bg-indigo-700 transition-all duration-300 font-semibold shadow-md"
+                        className="bg-[#6366F1] text-white px-8 py-3 rounded-xl hover:bg-[#4F46E5] transition-all duration-300 font-semibold shadow-md"
                     >
                         🔁 Try Another Quiz
                     </button>
@@ -469,14 +469,14 @@ export default function CourseQuiz() {
         );
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
-            <div className="bg-white shadow-2xl rounded-3xl p-10 max-w-4xl w-full animate-fadeIn">
-                <h2 className="text-center text-4xl font-extrabold mb-8 text-indigo-700 capitalize">
+        <div className="min-h-screen flex items-center justify-center bg-[#111827] p-4">
+            <div className="bg-[#1F2937] shadow-2xl rounded-3xl p-10 max-w-4xl w-full animate-fadeIn border border-white/10">
+                <h2 className="text-center text-4xl font-extrabold mb-8 text-[#2DD4BF] capitalize">
                     {course} ({level}) Quiz
                 </h2>
 
                 <div className="mb-6">
-                    <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                    <h3 className="text-2xl font-semibold text-gray-100 mb-4">
                         {current + 1}. {q.question}
                     </h3>
 
@@ -485,17 +485,17 @@ export default function CourseQuiz() {
                             <label
                                 key={i}
                                 className={`block px-5 py-4 rounded-xl cursor-pointer transition-all duration-300 ${answers[current] === i
-                                        ? "bg-indigo-200 border-2 border-indigo-500"
-                                        : "bg-gray-100 hover:bg-indigo-100"
+                                        ? "bg-[#6366F1] border-2 border-[#2DD4BF]"
+                                        : "bg-[#111827] border border-gray-600 hover:bg-[#0F172A]"
                                     }`}
                             >
                                 <input
                                     type="radio"
                                     checked={answers[current] === i}
                                     onChange={() => handleAnswer(i)}
-                                    className="mr-3 accent-indigo-600 scale-125"
+                                    className="mr-3 accent-[#6366F1] scale-125"
                                 />
-                                <span className="text-gray-700 text-lg">{opt}</span>
+                                <span className="text-gray-100 text-lg">{opt}</span>
                             </label>
                         ))}
                     </div>
@@ -506,8 +506,8 @@ export default function CourseQuiz() {
                         onClick={prev}
                         disabled={current === 0}
                         className={`px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 ${current === 0
-                                ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-indigo-600 hover:bg-indigo-700 shadow-md"
+                                ? "bg-gray-700 cursor-not-allowed"
+                                : "bg-[#6366F1] hover:bg-[#4F46E5] shadow-md"
                             }`}
                     >
                         ← Prev
@@ -515,7 +515,7 @@ export default function CourseQuiz() {
 
                     <button
                         onClick={next}
-                        className="px-6 py-3 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 shadow-md font-semibold transition-all duration-300"
+                        className="px-6 py-3 rounded-xl bg-[#6366F1] text-white hover:bg-[#4F46E5] shadow-md font-semibold transition-all duration-300"
                     >
                         {current === quiz.length - 1 ? "Submit" : "Next →"}
                     </button>
