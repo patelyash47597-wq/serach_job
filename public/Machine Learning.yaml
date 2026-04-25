@@ -1,47 +1,225 @@
-title: Machine Learning Roadmap
+title: "🤖 Machine Learning Engineer Roadmap"
 
 nodes:
+  # Main chain
   - id: ml_basics
-    label: ML Basics & Python
-    position: { x: 550, y: 100 }
+    label: "🐍 ML Basics & Python"
     resources:
       - title: "Machine Learning for Beginners"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=Gv9_4yMHFhI"
+      - title: "Python for ML"
+        type: Course
+        url: "https://www.kaggle.com/learn/python"
 
   - id: statistics_ml
-    label: Statistics & Mathematics
-    position: { x: 550, y: 200 }
+    label: "📐 Statistics & Mathematics"
     resources:
       - title: "Math for Machine Learning"
-        type: "Course"
+        type: Course
         url: "https://www.coursera.org/specializations/mathematics-machine-learning"
 
   - id: data_preprocessing
-    label: Data Preprocessing & Feature Engineering
-    position: { x: 550, y: 300 }
+    label: "🧹 Data Preprocessing"
     resources:
       - title: "Feature Engineering Tutorial"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=2XbD8OKmDZE"
 
   - id: algorithms
-    label: ML Algorithms
-    position: { x: 550, y: 400 }
+    label: "⚙️ ML Algorithms"
     resources:
       - title: "Supervised & Unsupervised Learning"
-        type: "Article"
+        type: Article
         url: "https://towardsdatascience.com/supervised-and-unsupervised-learning-14f68e32ea8d"
 
+  - id: deep_learning
+    label: "🧠 Deep Learning & Neural Nets"
+    resources:
+      - title: "Deep Learning Specialization"
+        type: Course
+        url: "https://www.coursera.org/specializations/deep-learning"
+      - title: "Neural Networks from Scratch"
+        type: Video
+        url: "https://www.youtube.com/watch?v=aircAruvnKk"
+
+  - id: nlp
+    label: "💬 NLP & LLMs"
+    resources:
+      - title: "HuggingFace NLP Course"
+        type: Course
+        url: "https://huggingface.co/learn/nlp-course"
+
+  - id: computer_vision
+    label: "👁️ Computer Vision"
+    resources:
+      - title: "OpenCV Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=oXlwWbU8l2o"
+
+  - id: mlops
+    label: "🔧 MLOps & Pipelines"
+    resources:
+      - title: "MLOps Fundamentals"
+        type: Course
+        url: "https://www.coursera.org/learn/mlops-fundamentals"
+
   - id: deployment_ml
-    label: ML Deployment
-    position: { x: 550, y: 500 }
+    label: "🚀 ML Deployment"
     resources:
       - title: "ML Model Deployment Guide"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=7eh4d6sabA0"
 
+  - id: career_ml
+    label: "💼 Career & Research"
+    resources:
+      - title: "ML Engineer Roadmap"
+        type: Article
+        url: "https://roadmap.sh/mlops"
+
+  # Branch nodes: ml_basics
+  - id: python_basics
+    label: "Python Basics"
+  - id: numpy_basics
+    label: "NumPy"
+  - id: pandas_ml
+    label: "Pandas"
+  - id: matplotlib_ml
+    label: "Matplotlib"
+  - id: jupyter_ml
+    label: "Jupyter Notebooks"
+  - id: env_setup
+    label: "Env Setup (Conda)"
+
+  # Branch nodes: statistics_ml
+  - id: linear_algebra
+    label: "Linear Algebra"
+  - id: calculus_ml
+    label: "Calculus & Derivatives"
+  - id: probability_ml
+    label: "Probability Theory"
+  - id: statistics_desc
+    label: "Descriptive Statistics"
+  - id: bayesian
+    label: "Bayesian Thinking"
+  - id: information_theory
+    label: "Information Theory"
+
+  # Branch nodes: data_preprocessing
+  - id: data_cleaning
+    label: "Data Cleaning"
+  - id: missing_values
+    label: "Handling Missing Data"
+  - id: feature_scaling
+    label: "Feature Scaling"
+  - id: feature_selection
+    label: "Feature Selection"
+  - id: encoding
+    label: "Encoding Categoricals"
+  - id: eda
+    label: "EDA Techniques"
+
+  # Branch nodes: algorithms
+  - id: linear_reg
+    label: "Linear Regression"
+  - id: decision_trees
+    label: "Decision Trees"
+  - id: random_forest
+    label: "Random Forest"
+  - id: svm
+    label: "SVM"
+  - id: clustering
+    label: "K-Means Clustering"
+  - id: xgboost
+    label: "XGBoost / LightGBM"
+
+  # Branch nodes: deep_learning
+  - id: ann
+    label: "ANNs"
+  - id: cnn
+    label: "CNNs"
+  - id: rnn_lstm
+    label: "RNN & LSTM"
+  - id: transformers
+    label: "Transformers"
+  - id: pytorch
+    label: "PyTorch"
+  - id: tensorflow
+    label: "TensorFlow / Keras"
+
+  # Branch nodes: nlp
+  - id: text_preprocessing
+    label: "Text Preprocessing"
+  - id: word_embeddings
+    label: "Word Embeddings"
+  - id: bert_gpt
+    label: "BERT & GPT"
+  - id: fine_tuning
+    label: "Fine-Tuning LLMs"
+  - id: langchain
+    label: "LangChain"
+  - id: rag
+    label: "RAG Systems"
+
+  # Branch nodes: computer_vision
+  - id: image_processing
+    label: "Image Processing"
+  - id: object_detection
+    label: "Object Detection"
+  - id: image_segmentation
+    label: "Segmentation"
+  - id: opencv
+    label: "OpenCV"
+  - id: yolo
+    label: "YOLO"
+  - id: diffusion_models
+    label: "Diffusion Models"
+
+  # Branch nodes: mlops
+  - id: experiment_tracking
+    label: "MLflow / W&B"
+  - id: data_versioning
+    label: "DVC (Data Version)"
+  - id: model_registry
+    label: "Model Registry"
+  - id: feature_store
+    label: "Feature Store"
+  - id: airflow_ml
+    label: "Airflow Pipelines"
+  - id: monitoring_ml
+    label: "Model Monitoring"
+
+  # Branch nodes: deployment_ml
+  - id: fastapi_ml
+    label: "FastAPI Serving"
+  - id: docker_ml
+    label: "Docker for ML"
+  - id: kubernetes_ml
+    label: "Kubernetes"
+  - id: aws_sagemaker
+    label: "AWS SageMaker"
+  - id: onnx
+    label: "ONNX / TorchServe"
+  - id: edge_ml
+    label: "Edge Deployment"
+
+  # Branch nodes: career_ml
+  - id: kaggle_ml
+    label: "Kaggle Competitions"
+  - id: research_papers
+    label: "Read ArXiv Papers"
+  - id: github_ml
+    label: "GitHub Portfolio"
+  - id: certifications_ml
+    label: "Certifications"
+  - id: communities_ml
+    label: "ML Communities"
+  - id: jobs_ml
+    label: "ML Job Boards"
+
 edges:
+  # Main chain
   - from: ml_basics
     to: statistics_ml
   - from: statistics_ml
@@ -49,4 +227,94 @@ edges:
   - from: data_preprocessing
     to: algorithms
   - from: algorithms
+    to: deep_learning
+  - from: deep_learning
+    to: nlp
+  - from: nlp
+    to: computer_vision
+  - from: computer_vision
+    to: mlops
+  - from: mlops
     to: deployment_ml
+  - from: deployment_ml
+    to: career_ml
+
+  # ml_basics branches
+  - { from: ml_basics, to: python_basics,  style: dashed }
+  - { from: ml_basics, to: numpy_basics,   style: dashed }
+  - { from: ml_basics, to: pandas_ml,      style: dashed }
+  - { from: ml_basics, to: matplotlib_ml,  style: dashed }
+  - { from: ml_basics, to: jupyter_ml,     style: dashed }
+  - { from: ml_basics, to: env_setup,      style: dashed }
+
+  # statistics_ml branches
+  - { from: statistics_ml, to: linear_algebra,     style: dashed }
+  - { from: statistics_ml, to: probability_ml,     style: dashed }
+  - { from: statistics_ml, to: calculus_ml,        style: dashed }
+  - { from: statistics_ml, to: statistics_desc,    style: dashed }
+  - { from: statistics_ml, to: bayesian,           style: dashed }
+  - { from: statistics_ml, to: information_theory, style: dashed }
+
+  # data_preprocessing branches
+  - { from: data_preprocessing, to: data_cleaning,    style: dashed }
+  - { from: data_preprocessing, to: missing_values,   style: dashed }
+  - { from: data_preprocessing, to: feature_scaling,  style: dashed }
+  - { from: data_preprocessing, to: feature_selection, style: dashed }
+  - { from: data_preprocessing, to: encoding,         style: dashed }
+  - { from: data_preprocessing, to: eda,              style: dashed }
+
+  # algorithms branches
+  - { from: algorithms, to: linear_reg,     style: dashed }
+  - { from: algorithms, to: decision_trees, style: dashed }
+  - { from: algorithms, to: random_forest,  style: dashed }
+  - { from: algorithms, to: svm,            style: dashed }
+  - { from: algorithms, to: clustering,     style: dashed }
+  - { from: algorithms, to: xgboost,        style: dashed }
+
+  # deep_learning branches
+  - { from: deep_learning, to: ann,          style: dashed }
+  - { from: deep_learning, to: cnn,          style: dashed }
+  - { from: deep_learning, to: rnn_lstm,     style: dashed }
+  - { from: deep_learning, to: transformers, style: dashed }
+  - { from: deep_learning, to: pytorch,      style: dashed }
+  - { from: deep_learning, to: tensorflow,   style: dashed }
+
+  # nlp branches
+  - { from: nlp, to: text_preprocessing, style: dashed }
+  - { from: nlp, to: word_embeddings,    style: dashed }
+  - { from: nlp, to: bert_gpt,           style: dashed }
+  - { from: nlp, to: fine_tuning,        style: dashed }
+  - { from: nlp, to: langchain,          style: dashed }
+  - { from: nlp, to: rag,                style: dashed }
+
+  # computer_vision branches
+  - { from: computer_vision, to: image_processing,   style: dashed }
+  - { from: computer_vision, to: object_detection,   style: dashed }
+  - { from: computer_vision, to: image_segmentation, style: dashed }
+  - { from: computer_vision, to: opencv,             style: dashed }
+  - { from: computer_vision, to: yolo,               style: dashed }
+  - { from: computer_vision, to: diffusion_models,   style: dashed }
+
+  # mlops branches
+  - { from: mlops, to: experiment_tracking, style: dashed }
+  - { from: mlops, to: data_versioning,     style: dashed }
+  - { from: mlops, to: model_registry,      style: dashed }
+  - { from: mlops, to: feature_store,       style: dashed }
+  - { from: mlops, to: airflow_ml,          style: dashed }
+  - { from: mlops, to: monitoring_ml,       style: dashed }
+
+  # deployment_ml branches
+  - { from: deployment_ml, to: fastapi_ml,     style: dashed }
+  - { from: deployment_ml, to: docker_ml,      style: dashed }
+  - { from: deployment_ml, to: kubernetes_ml,  style: dashed }
+  - { from: deployment_ml, to: aws_sagemaker,  style: dashed }
+  - { from: deployment_ml, to: onnx,           style: dashed }
+  - { from: deployment_ml, to: edge_ml,        style: dashed }
+
+  # career_ml branches
+  - { from: career_ml, to: kaggle_ml,        style: dashed }
+  - { from: career_ml, to: research_papers,  style: dashed }
+  - { from: career_ml, to: github_ml,        style: dashed }
+  - { from: career_ml, to: certifications_ml, style: dashed }
+  - { from: career_ml, to: communities_ml,   style: dashed }
+  - { from: career_ml, to: jobs_ml,          style: dashed }

@@ -37,12 +37,12 @@ export default function Signup() {
   return (
     <div className="min-h-screen flex flex-col md:flex-row">
       {/* Left section with form */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-blue-900">
+      <div className="w-full md:w-1/2 flex items-center justify-center bg-[#111827]">
         <form
           onSubmit={handleSignup}
-          className="bg-white p-8 rounded-2xl shadow-lg w-80"
+          className="bg-[#1F2937] p-8 rounded-2xl shadow-lg w-80 border border-white/10"
         >
-          <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          <h2 className="text-3xl font-bold mb-6 text-center text-[#2DD4BF]">
             Sign Up
           </h2>
 
@@ -51,7 +51,7 @@ export default function Signup() {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full mb-3 p-2 border rounded"
+            className="w-full mb-3 p-2 border border-gray-600 bg-[#111827] text-white rounded placeholder-gray-400"
             required
           />
 
@@ -60,7 +60,7 @@ export default function Signup() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full mb-3 p-2 border rounded"
+            className="w-full mb-3 p-2 border border-gray-600 bg-[#111827] text-white rounded placeholder-gray-400"
             required
           />
 
@@ -69,20 +69,20 @@ export default function Signup() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full mb-4 p-2 border rounded"
+            className="w-full mb-4 p-2 border border-gray-600 bg-[#111827] text-white rounded placeholder-gray-400"
             required
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+            className="w-full bg-[#6366F1] text-white py-2 rounded hover:bg-[#4F46E5] transition"
           >
             Sign Up
           </button>
 
-          <p className="mt-3 text-sm text-center">
+          <p className="mt-3 text-sm text-center text-gray-300">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-600 hover:underline">
+            <Link to="/login" className="text-[#2DD4BF] hover:underline">
               Login
             </Link>
           </p>

@@ -1,45 +1,256 @@
-title: DevOps Roadmap
+title: "🛠️ DevOps Engineer Roadmap"
 
 nodes:
+  # Main chain
   - id: devops_basics
-    label: DevOps Basics
-    position: { x: 550, y: 100 }
+    label: "🌐 DevOps Basics"
     resources:
       - title: "DevOps for Beginners"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=0yWAtQ6wYNM"
 
+  - id: linux_networking
+    label: "🐧 Linux & Networking"
+    resources:
+      - title: "Linux for DevOps"
+        type: Video
+        url: "https://www.youtube.com/watch?v=ROjZy1WbCIA"
+
+  - id: version_control
+    label: "🔀 Version Control"
+    resources:
+      - title: "Git & GitHub Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=apGV9Kg7ics"
+
   - id: ci_cd
-    label: CI/CD
-    position: { x: 550, y: 200 }
+    label: "⚙️ CI/CD Pipelines"
     resources:
       - title: "CI/CD Pipeline Tutorial"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=FtzNEdQu2gQ"
 
   - id: containerization
-    label: Containerization & Orchestration
-    position: { x: 550, y: 300 }
+    label: "🐳 Containers & Orchestration"
     resources:
       - title: "Docker for Beginners"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=pTFZFxd4hOI"
       - title: "Kubernetes Basics"
-        type: "Article"
+        type: Article
         url: "https://kubernetes.io/docs/tutorials/kubernetes-basics/"
 
-  - id: monitoring
-    label: Monitoring & Logging
-    position: { x: 550, y: 400 }
+  - id: iac
+    label: "📦 Infrastructure as Code"
     resources:
-      - title: "Prometheus & Grafana Basics"
-        type: "Video"
+      - title: "Terraform Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=SLB_c_ayRMo"
+
+  - id: cloud
+    label: "☁️ Cloud Platforms"
+    resources:
+      - title: "AWS for Beginners"
+        type: Course
+        url: "https://www.youtube.com/watch?v=ulprqHHWlng"
+
+  - id: monitoring
+    label: "📡 Monitoring & Logging"
+    resources:
+      - title: "Prometheus & Grafana"
+        type: Video
         url: "https://www.youtube.com/watch?v=h4Sl21AKiDg"
 
+  - id: security
+    label: "🔐 DevSecOps & Security"
+    resources:
+      - title: "DevSecOps Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=1qkq0HyKOMM"
+
+  # Branch nodes: devops_basics
+  - id: devops_culture
+    label: "DevOps Culture"
+  - id: agile_scrum
+    label: "Agile & Scrum"
+  - id: sdlc
+    label: "SDLC Overview"
+  - id: devops_tools
+    label: "DevOps Toolchain"
+
+  # Branch nodes: linux_networking
+  - id: linux_commands
+    label: "Linux Commands"
+  - id: bash_scripting
+    label: "Bash Scripting"
+  - id: tcp_ip
+    label: "TCP/IP & DNS"
+  - id: ssh_firewall
+    label: "SSH & Firewalls"
+
+  # Branch nodes: version_control
+  - id: git_basics
+    label: "Git Basics"
+  - id: branching
+    label: "Branching Strategy"
+  - id: pull_requests
+    label: "Pull Requests"
+  - id: git_actions
+    label: "GitHub Actions"
+
+  # Branch nodes: ci_cd
+  - id: jenkins
+    label: "Jenkins"
+  - id: github_actions
+    label: "GitHub Actions"
+  - id: gitlab_ci
+    label: "GitLab CI"
+  - id: pipeline_design
+    label: "Pipeline Design"
+  - id: testing_ci
+    label: "Automated Testing"
+  - id: artifacts
+    label: "Build Artifacts"
+
+  # Branch nodes: containerization
+  - id: docker_basics
+    label: "Docker Basics"
+  - id: dockerfile
+    label: "Dockerfile"
+  - id: kubernetes
+    label: "Kubernetes (K8s)"
+  - id: helm
+    label: "Helm Charts"
+  - id: docker_compose
+    label: "Docker Compose"
+  - id: service_mesh
+    label: "Service Mesh"
+
+  # Branch nodes: iac
+  - id: terraform
+    label: "Terraform"
+  - id: ansible
+    label: "Ansible"
+  - id: pulumi
+    label: "Pulumi"
+  - id: config_mgmt
+    label: "Config Management"
+
+  # Branch nodes: cloud
+  - id: aws
+    label: "AWS"
+  - id: azure
+    label: "Azure"
+  - id: gcp
+    label: "Google Cloud"
+  - id: cloud_networking
+    label: "Cloud Networking"
+  - id: serverless
+    label: "Serverless"
+  - id: cloud_storage
+    label: "Cloud Storage"
+
+  # Branch nodes: monitoring
+  - id: prometheus
+    label: "Prometheus"
+  - id: grafana
+    label: "Grafana"
+  - id: elk_stack
+    label: "ELK Stack"
+  - id: alerting
+    label: "Alerting & On-call"
+  - id: distributed_tracing
+    label: "Distributed Tracing"
+  - id: uptime
+    label: "Uptime Monitoring"
+
+  # Branch nodes: security
+  - id: secrets_mgmt
+    label: "Secrets Management"
+  - id: vulnerability
+    label: "Vulnerability Scanning"
+  - id: compliance
+    label: "Compliance & Auditing"
+  - id: zero_trust
+    label: "Zero Trust Network"
+
 edges:
+  # Main chain
   - from: devops_basics
+    to: linux_networking
+  - from: linux_networking
+    to: version_control
+  - from: version_control
     to: ci_cd
   - from: ci_cd
     to: containerization
   - from: containerization
+    to: iac
+  - from: iac
+    to: cloud
+  - from: cloud
     to: monitoring
+  - from: monitoring
+    to: security
+
+  # devops_basics branches
+  - { from: devops_basics, to: devops_culture, style: dashed }
+  - { from: devops_basics, to: agile_scrum,    style: dashed }
+  - { from: devops_basics, to: sdlc,           style: dashed }
+  - { from: devops_basics, to: devops_tools,   style: dashed }
+
+  # linux_networking branches
+  - { from: linux_networking, to: linux_commands, style: dashed }
+  - { from: linux_networking, to: tcp_ip,         style: dashed }
+  - { from: linux_networking, to: bash_scripting, style: dashed }
+  - { from: linux_networking, to: ssh_firewall,   style: dashed }
+
+  # version_control branches
+  - { from: version_control, to: git_basics,    style: dashed }
+  - { from: version_control, to: branching,     style: dashed }
+  - { from: version_control, to: pull_requests, style: dashed }
+  - { from: version_control, to: git_actions,   style: dashed }
+
+  # ci_cd branches
+  - { from: ci_cd, to: jenkins,         style: dashed }
+  - { from: ci_cd, to: github_actions,  style: dashed }
+  - { from: ci_cd, to: gitlab_ci,       style: dashed }
+  - { from: ci_cd, to: pipeline_design, style: dashed }
+  - { from: ci_cd, to: testing_ci,      style: dashed }
+  - { from: ci_cd, to: artifacts,       style: dashed }
+
+  # containerization branches
+  - { from: containerization, to: docker_basics,  style: dashed }
+  - { from: containerization, to: kubernetes,     style: dashed }
+  - { from: containerization, to: dockerfile,     style: dashed }
+  - { from: containerization, to: helm,           style: dashed }
+  - { from: containerization, to: docker_compose, style: dashed }
+  - { from: containerization, to: service_mesh,   style: dashed }
+
+  # iac branches
+  - { from: iac, to: terraform,   style: dashed }
+  - { from: iac, to: ansible,     style: dashed }
+  - { from: iac, to: pulumi,      style: dashed }
+  - { from: iac, to: config_mgmt, style: dashed }
+
+  # cloud branches
+  - { from: cloud, to: aws,             style: dashed }
+  - { from: cloud, to: azure,           style: dashed }
+  - { from: cloud, to: gcp,             style: dashed }
+  - { from: cloud, to: cloud_networking, style: dashed }
+  - { from: cloud, to: serverless,      style: dashed }
+  - { from: cloud, to: cloud_storage,   style: dashed }
+
+  # monitoring branches
+  - { from: monitoring, to: prometheus,         style: dashed }
+  - { from: monitoring, to: grafana,            style: dashed }
+  - { from: monitoring, to: elk_stack,          style: dashed }
+  - { from: monitoring, to: alerting,           style: dashed }
+  - { from: monitoring, to: distributed_tracing, style: dashed }
+  - { from: monitoring, to: uptime,             style: dashed }
+
+  # security branches
+  - { from: security, to: secrets_mgmt,  style: dashed }
+  - { from: security, to: vulnerability, style: dashed }
+  - { from: security, to: compliance,    style: dashed }
+  - { from: security, to: zero_trust,    style: dashed }

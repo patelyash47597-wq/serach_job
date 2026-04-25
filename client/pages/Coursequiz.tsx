@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { auth, db } from "@/components/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
+import QuizExplainer from "@/components/QuizExplainer";
 
 // 🔹 Quiz Data by Course & Level
 const quizBank: Record<
@@ -317,6 +318,11 @@ export default function CourseQuiz() {
     const [answers, setAnswers] = useState<number[]>([]);
     const [score, setScore] = useState<number | null>(null);
     const [start, setStart] = useState(false);
+    const [wrongAnswer, setWrongAnswer] = useState<{   
+        question: string;
+        userAnswer: string;
+        correctAnswer: string;
+    } | null>(null);
 
     const handleStart = () => {
         if (!course || !level) {
@@ -335,34 +341,44 @@ export default function CourseQuiz() {
         setAnswers(newAns);
     };
 
-    const next = async () => {
-        if (answers[current] === undefined)
-            return alert("Please select an answer!");
 
-        const totalQ = quizBank[course][level].length;
-        if (current === totalQ - 1) {
-            const total = quizBank[course][level].reduce(
-                (acc, q, i) => acc + (answers[i] === q.answer ? 1 : 0),
-                0
-            );
-            setScore(total);
+        const next = async () => {
+            if (answers[current] === undefined)
+                return alert("Please select an answer!");
 
-            // ✅ Save to Firestore
-            const user = auth.currentUser;
-            if (user) {
-                const quizRef = collection(db, "users", user.uid, "quizzes");
-                await addDoc(quizRef, {
-                    course,
-                    level,
-                    score: total,
-                    total: totalQ,
-                    timestamp: new Date(),
+            const currentQuiz = quizBank[course][level];
+            const isCorrect = answers[current] === currentQuiz[current].answer;
+            if (!isCorrect) {
+                setWrongAnswer({
+                    question: currentQuiz[current].question,
+                    userAnswer: currentQuiz[current].options[answers[current]],
+                    correctAnswer: currentQuiz[current].options[currentQuiz[current].answer],
                 });
             }
-        } else {
-            setCurrent(current + 1);
-        }
-    };
+
+            const totalQ = currentQuiz.length;
+            if (current === totalQ - 1) {
+                const total = currentQuiz.reduce(
+                    (acc, q, i) => acc + (answers[i] === q.answer ? 1 : 0),
+                    0
+                );
+                setScore(total);
+
+                const user = auth.currentUser;
+                if (user) {
+                    const quizRef = collection(db, "users", user.uid, "quizzes");
+                    await addDoc(quizRef, {
+                        course,
+                        level,
+                        score: total,
+                        total: totalQ,
+                        timestamp: new Date(),
+                    });
+                }
+            } else {
+                setCurrent(current + 1);
+            }
+        };
 
     const prev = () => current > 0 && setCurrent(current - 1);
 
@@ -377,7 +393,7 @@ export default function CourseQuiz() {
 
                     <div className="space-y-6">
                         <div>
-                            <label className="block text-lg font-semibold text-gray-700 mb-2">
+                            <label className="block text-lg font-semibold text-gray-300 mb-2">
                                 Select Course
                             </label>
                             <select
@@ -395,13 +411,13 @@ export default function CourseQuiz() {
                         </div>
 
                         <div>
-                            <label className="block text-lg font-semibold text-gray-700 mb-2">
+                            <label className="block text-lg font-semibold text-gray-300 mb-2">
                                 Select Level
                             </label>
                             <select
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
-                                className="w-full p-3 rounded-xl border border-gray-300 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none text-black"
+                                className="w-full p-3 rounded-xl border border-gray-600 bg-[#111827] text-white shadow-sm focus:ring-2 focus:ring-[#6366F1] focus:outline-none"
                             >
                                 <option value="">-- Choose Difficulty --</option>
                                 <option value="easy">Easy</option>
@@ -485,8 +501,8 @@ export default function CourseQuiz() {
                             <label
                                 key={i}
                                 className={`block px-5 py-4 rounded-xl cursor-pointer transition-all duration-300 ${answers[current] === i
-                                        ? "bg-[#6366F1] border-2 border-[#2DD4BF]"
-                                        : "bg-[#111827] border border-gray-600 hover:bg-[#0F172A]"
+                                    ? "bg-[#6366F1] border-2 border-[#2DD4BF]"
+                                    : "bg-[#111827] border border-gray-600 hover:bg-[#0F172A]"
                                     }`}
                             >
                                 <input
@@ -500,14 +516,21 @@ export default function CourseQuiz() {
                         ))}
                     </div>
                 </div>
-
+                {wrongAnswer && (
+                    <QuizExplainer
+                        question={wrongAnswer.question}
+                        userAnswer={wrongAnswer.userAnswer}
+                        correctAnswer={wrongAnswer.correctAnswer}
+                        onClose={() => setWrongAnswer(null)}
+                    />
+                )}
                 <div className="flex justify-between mt-8">
                     <button
                         onClick={prev}
                         disabled={current === 0}
                         className={`px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 ${current === 0
-                                ? "bg-gray-700 cursor-not-allowed"
-                                : "bg-[#6366F1] hover:bg-[#4F46E5] shadow-md"
+                            ? "bg-gray-700 cursor-not-allowed"
+                            : "bg-[#6366F1] hover:bg-[#4F46E5] shadow-md"
                             }`}
                     >
                         ← Prev

@@ -1,45 +1,286 @@
-title: Blockchain Development Roadmap
+title: "⛓️ Blockchain Developer Roadmap"
 
 nodes:
+  # Main chain
   - id: blockchain_basics
-    label: Blockchain Basics
-    position: { x: 550, y: 100 }
+    label: "⛓️ Blockchain Basics"
     resources:
       - title: "Blockchain Explained"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=SSo_EIwHSd4"
       - title: "Blockchain Beginner Guide"
-        type: "Article"
+        type: Article
         url: "https://www.ibm.com/topics/what-is-blockchain"
 
   - id: cryptocurrencies
-    label: Cryptocurrencies & Tokens
-    position: { x: 550, y: 200 }
+    label: "🪙 Cryptocurrencies & Tokens"
     resources:
       - title: "Bitcoin & Ethereum Overview"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=Gc2en3nHxA4"
 
   - id: smart_contracts
-    label: Smart Contracts
-    position: { x: 550, y: 300 }
+    label: "📜 Smart Contracts"
     resources:
       - title: "Solidity Tutorial"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=ipwxYa-F1uY"
 
+  - id: web3_dev
+    label: "🌐 Web3 Development"
+    resources:
+      - title: "Web3.js Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=t3wM5903ty0"
+
   - id: dapps
-    label: DApps & Platforms
-    position: { x: 550, y: 400 }
+    label: "🏗️ DApps & Platforms"
     resources:
       - title: "Building Decentralized Apps"
-        type: "Course"
+        type: Course
         url: "https://ethereum.org/en/developers/tutorials/"
 
+  - id: defi
+    label: "💰 DeFi & Protocols"
+    resources:
+      - title: "DeFi Full Course"
+        type: Video
+        url: "https://www.youtube.com/watch?v=eiS6F9PLkQ4"
+
+  - id: nft_metaverse
+    label: "🎨 NFT & Metaverse"
+    resources:
+      - title: "NFT Development Tutorial"
+        type: Video
+        url: "https://www.youtube.com/watch?v=meTpMP0J5E8"
+
+  - id: security_auditing
+    label: "🔐 Security & Auditing"
+    resources:
+      - title: "Smart Contract Security"
+        type: Course
+        url: "https://consensys.github.io/smart-contract-best-practices/"
+
+  - id: career
+    label: "🚀 Career & Ecosystem"
+    resources:
+      - title: "Blockchain Developer Career Guide"
+        type: Article
+        url: "https://roadmap.sh/blockchain"
+
+  # Branch nodes: blockchain_basics
+  - id: distributed_ledger
+    label: "Distributed Ledger"
+  - id: consensus
+    label: "Consensus Mechanisms"
+  - id: hashing
+    label: "Hashing & Cryptography"
+  - id: nodes_network
+    label: "Nodes & Network"
+  - id: public_private
+    label: "Public vs Private Chain"
+  - id: blockchain_types
+    label: "Chain Types"
+
+  # Branch nodes: cryptocurrencies
+  - id: bitcoin
+    label: "Bitcoin (BTC)"
+  - id: ethereum
+    label: "Ethereum (ETH)"
+  - id: altcoins
+    label: "Altcoins & Stablecoins"
+  - id: wallets
+    label: "Crypto Wallets"
+  - id: tokenomics
+    label: "Tokenomics"
+  - id: erc_standards
+    label: "ERC-20 / ERC-721"
+
+  # Branch nodes: smart_contracts
+  - id: solidity
+    label: "Solidity Language"
+  - id: vyper
+    label: "Vyper"
+  - id: remix_ide
+    label: "Remix IDE"
+  - id: hardhat
+    label: "Hardhat"
+  - id: foundry
+    label: "Foundry"
+  - id: contract_testing
+    label: "Contract Testing"
+
+  # Branch nodes: web3_dev
+  - id: web3js
+    label: "Web3.js"
+  - id: ethersjs
+    label: "Ethers.js"
+  - id: metamask
+    label: "MetaMask Integration"
+  - id: ipfs
+    label: "IPFS & Filecoin"
+  - id: the_graph
+    label: "The Graph (Indexing)"
+  - id: wagmi
+    label: "Wagmi / RainbowKit"
+
+  # Branch nodes: dapps
+  - id: ethereum_dapp
+    label: "Ethereum DApps"
+  - id: solana_dapp
+    label: "Solana DApps"
+  - id: polygon
+    label: "Polygon Network"
+  - id: layer2
+    label: "Layer 2 Solutions"
+  - id: cross_chain
+    label: "Cross-Chain Bridges"
+  - id: dao
+    label: "DAOs"
+
+  # Branch nodes: defi
+  - id: dex
+    label: "DEX (Uniswap)"
+  - id: lending
+    label: "Lending Protocols"
+  - id: yield_farming
+    label: "Yield Farming"
+  - id: oracles
+    label: "Oracles (Chainlink)"
+  - id: liquidity
+    label: "Liquidity Pools"
+  - id: flash_loans
+    label: "Flash Loans"
+
+  # Branch nodes: nft_metaverse
+  - id: nft_minting
+    label: "NFT Minting"
+  - id: opensea
+    label: "OpenSea & Marketplaces"
+  - id: generative_art
+    label: "Generative Art"
+  - id: metaverse_platforms
+    label: "Metaverse Platforms"
+  - id: gaming_nft
+    label: "GameFi & Play-to-Earn"
+  - id: royalties
+    label: "Royalties & Standards"
+
+  # Branch nodes: security_auditing
+  - id: reentrancy
+    label: "Reentrancy Attacks"
+  - id: overflow
+    label: "Overflow Vulnerabilities"
+  - id: audit_tools
+    label: "Audit Tools (Slither)"
+  - id: formal_verification
+    label: "Formal Verification"
+  - id: bug_bounty
+    label: "Bug Bounty Programs"
+  - id: multisig
+    label: "Multisig Wallets"
+
+  # Branch nodes: career
+  - id: open_source
+    label: "Open Source Contrib."
+  - id: hackathons
+    label: "Web3 Hackathons"
+  - id: certifications
+    label: "Certifications"
+  - id: portfolio_web3
+    label: "Web3 Portfolio"
+  - id: communities
+    label: "Web3 Communities"
+  - id: jobs_web3
+    label: "Web3 Job Boards"
+
 edges:
+  # Main chain
   - from: blockchain_basics
     to: cryptocurrencies
   - from: cryptocurrencies
     to: smart_contracts
   - from: smart_contracts
+    to: web3_dev
+  - from: web3_dev
     to: dapps
+  - from: dapps
+    to: defi
+  - from: defi
+    to: nft_metaverse
+  - from: nft_metaverse
+    to: security_auditing
+  - from: security_auditing
+    to: career
+
+  # blockchain_basics branches
+  - { from: blockchain_basics, to: distributed_ledger, style: dashed }
+  - { from: blockchain_basics, to: consensus,          style: dashed }
+  - { from: blockchain_basics, to: hashing,            style: dashed }
+  - { from: blockchain_basics, to: nodes_network,      style: dashed }
+  - { from: blockchain_basics, to: public_private,     style: dashed }
+  - { from: blockchain_basics, to: blockchain_types,   style: dashed }
+
+  # cryptocurrencies branches
+  - { from: cryptocurrencies, to: bitcoin,      style: dashed }
+  - { from: cryptocurrencies, to: ethereum,     style: dashed }
+  - { from: cryptocurrencies, to: altcoins,     style: dashed }
+  - { from: cryptocurrencies, to: wallets,      style: dashed }
+  - { from: cryptocurrencies, to: tokenomics,   style: dashed }
+  - { from: cryptocurrencies, to: erc_standards, style: dashed }
+
+  # smart_contracts branches
+  - { from: smart_contracts, to: solidity,         style: dashed }
+  - { from: smart_contracts, to: remix_ide,        style: dashed }
+  - { from: smart_contracts, to: vyper,            style: dashed }
+  - { from: smart_contracts, to: hardhat,          style: dashed }
+  - { from: smart_contracts, to: foundry,          style: dashed }
+  - { from: smart_contracts, to: contract_testing, style: dashed }
+
+  # web3_dev branches
+  - { from: web3_dev, to: web3js,    style: dashed }
+  - { from: web3_dev, to: ethersjs,  style: dashed }
+  - { from: web3_dev, to: metamask,  style: dashed }
+  - { from: web3_dev, to: ipfs,      style: dashed }
+  - { from: web3_dev, to: the_graph, style: dashed }
+  - { from: web3_dev, to: wagmi,     style: dashed }
+
+  # dapps branches
+  - { from: dapps, to: ethereum_dapp, style: dashed }
+  - { from: dapps, to: solana_dapp,   style: dashed }
+  - { from: dapps, to: polygon,       style: dashed }
+  - { from: dapps, to: layer2,        style: dashed }
+  - { from: dapps, to: cross_chain,   style: dashed }
+  - { from: dapps, to: dao,           style: dashed }
+
+  # defi branches
+  - { from: defi, to: dex,          style: dashed }
+  - { from: defi, to: lending,      style: dashed }
+  - { from: defi, to: yield_farming, style: dashed }
+  - { from: defi, to: oracles,      style: dashed }
+  - { from: defi, to: liquidity,    style: dashed }
+  - { from: defi, to: flash_loans,  style: dashed }
+
+  # nft_metaverse branches
+  - { from: nft_metaverse, to: nft_minting,         style: dashed }
+  - { from: nft_metaverse, to: opensea,             style: dashed }
+  - { from: nft_metaverse, to: generative_art,      style: dashed }
+  - { from: nft_metaverse, to: metaverse_platforms, style: dashed }
+  - { from: nft_metaverse, to: gaming_nft,          style: dashed }
+  - { from: nft_metaverse, to: royalties,           style: dashed }
+
+  # security_auditing branches
+  - { from: security_auditing, to: reentrancy,          style: dashed }
+  - { from: security_auditing, to: overflow,            style: dashed }
+  - { from: security_auditing, to: audit_tools,         style: dashed }
+  - { from: security_auditing, to: formal_verification, style: dashed }
+  - { from: security_auditing, to: bug_bounty,          style: dashed }
+  - { from: security_auditing, to: multisig,            style: dashed }
+
+  # career branches
+  - { from: career, to: open_source,    style: dashed }
+  - { from: career, to: hackathons,     style: dashed }
+  - { from: career, to: certifications, style: dashed }
+  - { from: career, to: portfolio_web3, style: dashed }
+  - { from: career, to: communities,   style: dashed }
+  - { from: career, to: jobs_web3,     style: dashed }

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@300;400;600;700&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --node-bg: #161b22;
+            --node-border: #30363d;
+            --text: #e6edf3;
+            --muted: #8b949e;
+            --accent: #4dc9a8;
+            --blue: #58a6ff;
+            --gold: #f0b429;
+            --connector: #30363d;
+            --badge-video-bg: #0d2136;
+            --badge-video-text: #4dc9a8;
+            --badge-article-bg: #1c1a0d;
+            --badge-article-text: #f0b429;
+            --side-bg: #0e1520;
+            --side-border: #21262d;
+        }
+
+        html {
+            background: var(--bg);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 0 0 60px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .header h1 span {
+            color: var(--accent);
+        }
+
+        .header p {
+            color: var(--muted);
+            font-size: 0.82rem;
+            margin-top: 8px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .header-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+            margin: 16px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Roadmap container */
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            padding: 0 16px;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Each step row */
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            animation: fadeUp 0.5s ease both;
+        }
+
+        .step:nth-child(1) {
+            animation-delay: 0.05s;
+        }
+
+        .step:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .step:nth-child(3) {
+            animation-delay: 0.15s;
+        }
+
+        .step:nth-child(4) {
+            animation-delay: 0.2s;
+        }
+
+        .step:nth-child(5) {
+            animation-delay: 0.25s;
+        }
+
+        .step:nth-child(6) {
+            animation-delay: 0.3s;
+        }
+
+        .step:nth-child(7) {
+            animation-delay: 0.35s;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Connector line between steps */
+        .connector {
+            width: 2px;
+            height: 28px;
+            background: linear-gradient(to bottom, var(--accent)44, var(--connector));
+            flex-shrink: 0;
+        }
+
+        /* Main node */
+        .main-node {
+            background: var(--node-bg);
+            border: 1px solid var(--node-border);
+            border-radius: 10px;
+            padding: 14px 20px;
+            width: min(380px, 100%);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-node::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--blue));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+
+        .main-node:hover {
+            border-color: var(--accent)88;
+            box-shadow: 0 0 20px var(--accent)22;
+        }
+
+        .main-node:hover::before {
+            opacity: 1;
+        }
+
+        .node-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        /* Resource badge */
+        .resource-badge {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.15s;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .resource-badge:hover {
+            opacity: 0.85;
+            transform: scale(1.02);
+        }
+
+        .resource-badge.video {
+            background: var(--badge-video-bg);
+            color: var(--badge-video-text);
+            border: 1px solid var(--badge-video-text)55;
+        }
+
+        .resource-badge.article {
+            background: var(--badge-article-bg);
+            color: var(--badge-article-text);
+            border: 1px solid var(--badge-article-text)55;
+        }
+
+        .badge-icon {
+            font-size: 0.8rem;
+        }
+
+        /* Side branches row */
+        .branches {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            margin-top: 6px;
+        }
+
+        .branch-side {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            max-width: 240px;
+        }
+
+        .branch-side.left {
+            align-items: flex-end;
+        }
+
+        .branch-side.right {
+            align-items: flex-start;
+        }
+
+        .branch-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            width: 2px;
+            min-height: 100%;
+            position: relative;
+        }
+
+        .branch-v-line {
+            width: 2px;
+            background: var(--connector);
+            flex: 1;
+        }
+
+        .branch-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--side-bg);
+            border: 1px solid var(--side-border);
+            border-radius: 6px;
+            padding: 5px 10px;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+            white-space: nowrap;
+            max-width: 220px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .branch-item:hover {
+            color: var(--blue);
+            border-color: var(--blue)66;
+            background: #0d1e36;
+        }
+
+        .branch-item .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* H-connector lines for branches */
+        .branch-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .h-line {
+            height: 1px;
+            width: 18px;
+            background: var(--connector);
+            flex-shrink: 0;
+        }
+
+        /* Wrap for branches with horizontal lines */
+        .branches-wrap {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            width: 100%;
+            gap: 0;
+        }
+
+        .side-col {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+            max-width: 230px;
+        }
+
+        .side-col.left {
+            align-items: flex-end;
+            padding-right: 10px;
+        }
+
+        .side-col.right {
+            align-items: flex-start;
+            padding-left: 10px;
+        }
+
+        .center-line {
+            width: 2px;
+            background: var(--connector);
+            min-height: 100%;
+        }
+
+        .side-item-row {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .side-item-row.left {
+            flex-direction: row-reverse;
+        }
+
+        .side-item-row .h-stub {
+            width: 14px;
+            height: 1px;
+            background: var(--connector);
+            flex-shrink: 0;
+        }
+
+        /* Step number badge */
+        .step-num {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: var(--accent);
+            color: var(--bg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 0 10px 0 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .step-num.frontend {
+            background: var(--blue);
+        }
+
+        .step-num.backend {
+            background: #da7a2f;
+        }
+
+        .step-num.database {
+            background: #a371f7;
+        }
+
+        .step-num.fullstack {
+            background: var(--accent);
+        }
+
+        .step-num.deploy {
+            background: #ec6547;
+        }
+
+        .step-num.advanced {
+            background: var(--gold);
+            color: #1a1200;
+        }
+
+        /* Sticky legend */
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--node-bg);
+            border: 1px solid var(--node-border);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.68rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--muted);
+            z-index: 100;
+        }
+
+        .legend div {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin-bottom: 4px;
+        }
+
+        .legend div:last-child {
+            margin-bottom: 0;
+        }
+
+        .legend .lv {
+            color: var(--badge-video-text);
+            font-size: 0.7rem;
+        }
+
+        .legend .la {
+            color: var(--badge-article-text);
+            font-size: 0.7rem;
+        }
+
+        .legend .lb {
+            color: var(--blue);
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>🚀 Full-Stack <span>Developer</span> Roadmap</h1>
+        <p>// follow the path · click any resource to learn</p>
+        <div class="header-line"></div>
+    </div>
+
+    <div class="roadmap" id="roadmap"></div>
+
+    <div class="legend">
+        <div><span class="lv">▶</span> Video resource</div>
+        <div><span class="la">◆</span> Article resource</div>
+        <div><span class="lb">→</span> Click to open</div>
+    </div>
+
+    <script>
+        const data = [
+            {
+                id: "fundamentals",
+                label: "📚 Fundamentals",
+                stepLabel: "STEP 01",
+                stepClass: "",
+                resource: { title: "Web Development Basics", type: "video", url: "https://www.youtube.com/watch?v=3pLYvFQ1cVY" },
+                left: [
+                    { label: "HTML", url: "https://developer.mozilla.org/en-US/docs/Learn/HTML" },
+                    { label: "CSS (Flexbox, Grid)", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+                    { label: "JavaScript (ES6+)", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+                ],
+                right: [
+                    { label: "Git & GitHub", url: "https://git-scm.com" },
+                    { label: "Browser DevTools", url: "https://developer.chrome.com/docs/devtools" },
+                    { label: "Responsive Design", url: "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" },
+                ]
+            },
+            {
+                id: "frontend",
+                label: "🎨 Frontend Development",
+                stepLabel: "STEP 02",
+                stepClass: "frontend",
+                resource: { title: "React JS Tutorial", type: "video", url: "https://www.youtube.com/watch?v=Ke90Tje7VS0" },
+                left: [
+                    { label: "React (Hooks, Components)", url: "https://react.dev" },
+                    { label: "Routing (React Router)", url: "https://reactrouter.com" },
+                    { label: "State Management", url: "https://react.dev/learn/passing-data-deeply-with-context" },
+                ],
+                right: [
+                    { label: "Tailwind CSS", url: "https://tailwindcss.com" },
+                    { label: "Bootstrap", url: "https://getbootstrap.com" },
+                    { label: "Fetch / Axios", url: "https://axios-http.com" },
+                ]
+            },
+            {
+                id: "backend",
+                label: "⚙️ Backend Development",
+                stepLabel: "STEP 03",
+                stepClass: "backend",
+                resource: { title: "Node.js & Express Tutorial", type: "video", url: "https://www.youtube.com/watch?v=Oe421EPjeBE" },
+                left: [
+                    { label: "Node.js", url: "https://nodejs.org" },
+                    { label: "Express.js", url: "https://expressjs.com" },
+                    { label: "REST API Design", url: "https://restfulapi.net" },
+                ],
+                right: [
+                    { label: "Authentication (JWT)", url: "https://jwt.io/introduction" },
+                    { label: "Middleware", url: "https://expressjs.com/en/guide/using-middleware.html" },
+                    { label: "Django (Alternative)", url: "https://www.djangoproject.com" },
+                ]
+            },
+            {
+                id: "database",
+                label: "🗄️ Databases",
+                stepLabel: "STEP 04",
+                stepClass: "database",
+                resource: { title: "SQL vs NoSQL", type: "article", url: "https://www.geeksforgeeks.org/difference-between-sql-and-nosql/" },
+                left: [
+                    { label: "MySQL", url: "https://www.mysql.com" },
+                    { label: "PostgreSQL", url: "https://www.postgresql.org" },
+                ],
+                right: [
+                    { label: "MongoDB", url: "https://www.mongodb.com" },
+                    { label: "Redis (Caching)", url: "https://redis.io" },
+                ]
+            },
+            {
+                id: "fullstack",
+                label: "🔗 Full-Stack Integration",
+                stepLabel: "STEP 05",
+                stepClass: "fullstack",
+                resource: { title: "Build Full Stack App", type: "video", url: "https://www.youtube.com/watch?v=7CqJlxBYj-M" },
+                left: [
+                    { label: "Connect Frontend + Backend", url: "https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs" },
+                    { label: "CRUD Operations", url: "https://www.freecodecamp.org/news/crud-operations-explained/" },
+                ],
+                right: [
+                    { label: "Authentication System", url: "https://jwt.io" },
+                    { label: "Error Handling", url: "https://expressjs.com/en/guide/error-handling.html" },
+                ]
+            },
+            {
+                id: "deployment",
+                label: "🚀 Deployment & DevOps",
+                stepLabel: "STEP 06",
+                stepClass: "deploy",
+                resource: { title: "Deploy Full Stack App", type: "video", url: "https://www.youtube.com/watch?v=71wSzpLyW9k" },
+                left: [
+                    { label: "Git & GitHub", url: "https://git-scm.com" },
+                    { label: "Docker", url: "https://docs.docker.com" },
+                ],
+                right: [
+                    { label: "Vercel (Frontend)", url: "https://vercel.com" },
+                    { label: "AWS / Render (Backend)", url: "https://aws.amazon.com" },
+                ]
+            },
+            {
+                id: "advanced",
+                label: "🧠 Advanced Topics",
+                stepLabel: "STEP 07",
+                stepClass: "advanced",
+                resource: { title: "Advanced Web Dev Concepts", type: "article", url: "https://roadmap.sh/full-stack" },
+                left: [
+                    { label: "WebSockets", url: "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API" },
+                    { label: "Testing (Jest)", url: "https://jestjs.io" },
+                ],
+                right: [
+                    { label: "CI/CD", url: "https://www.redhat.com/en/topics/devops/what-is-ci-cd" },
+                    { label: "Microservices", url: "https://microservices.io" },
+                ]
+            },
+        ];
+
+        function buildStep(node, isFirst) {
+            const typeIcon = node.resource.type === 'video' ? '▶' : '◆';
+
+            // build side items
+            const leftItems = node.left.map(item => `
+    <div class="side-item-row left">
+      <a href="${item.url}" target="_blank" class="branch-item"><span class="dot"></span>${item.label}</a>
+      <div class="h-stub"></div>
+    </div>
+  `).join('');
+
+            const rightItems = node.right.map(item => `
+    <div class="side-item-row right">
+      <div class="h-stub"></div>
+      <a href="${item.url}" target="_blank" class="branch-item"><span class="dot"></span>${item.label}</a>
+    </div>
+  `).join('');
+
+            const connectorAbove = isFirst ? '' : `<div class="connector"></div>`;
+
+            return `
+    <div class="step">
+      ${connectorAbove}
+      <div class="main-node">
+        <span class="step-num ${node.stepClass}">${node.stepLabel}</span>
+        <div class="node-title">${node.label}</div>
+        <a href="${node.resource.url}" target="_blank" class="resource-badge ${node.resource.type}">
+          <span class="badge-icon">${typeIcon}</span>${node.resource.title}
+        </a>
+      </div>
+      <div class="branches-wrap" style="margin-top:8px;">
+        <div class="side-col left">${leftItems}</div>
+        <div class="center-line"></div>
+        <div class="side-col right">${rightItems}</div>
+      </div>
+    </div>
+  `;
+        }
+
+        const roadmap = document.getElementById('roadmap');
+        roadmap.innerHTML = data.map((node, i) => buildStep(node, i === 0)).join('');
+    </script>
+</body>
+
+</html>

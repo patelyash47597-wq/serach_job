@@ -1,52 +1,197 @@
-title: Full-Stack Development Roadmap
+title: "🚀 Full-Stack Developer Roadmap"
 
 nodes:
-  - id: fs_basics
-    label: Programming & Web Fundamentals
-    position: { x: 550, y: 100 }
+  # ── Main chain ──
+  - id: fundamentals
+    label: "📚 Fundamentals"
     resources:
-      - title: "Full-Stack Web Development Guide"
-        type: "Video"
+      - title: "Web Development Basics"
+        type: Video
         url: "https://www.youtube.com/watch?v=3pLYvFQ1cVY"
 
   - id: frontend
-    label: Frontend Development
-    position: { x: 550, y: 200 }
+    label: "🎨 Frontend Development"
     resources:
       - title: "React JS Tutorial"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=Ke90Tje7VS0"
 
   - id: backend
-    label: Backend Development
-    position: { x: 550, y: 300 }
+    label: "⚙️ Backend Development"
     resources:
-      - title: "Node.js & Express.js Tutorial"
-        type: "Video"
+      - title: "Node.js & Express Tutorial"
+        type: Video
         url: "https://www.youtube.com/watch?v=Oe421EPjeBE"
 
-  - id: databases
-    label: Databases
-    position: { x: 550, y: 400 }
+  - id: database
+    label: "🗄️ Databases"
     resources:
-      - title: "SQL & NoSQL Overview"
-        type: "Article"
+      - title: "SQL vs NoSQL"
+        type: Article
         url: "https://www.geeksforgeeks.org/difference-between-sql-and-nosql/"
 
-  - id: deployment_fs
-    label: Deployment & DevOps
-    position: { x: 550, y: 500 }
+  - id: fullstack
+    label: "🔗 Full-Stack Integration"
     resources:
-      - title: "Full-Stack Deployment Tutorial"
-        type: "Video"
+      - title: "Build Full Stack App"
+        type: Video
+        url: "https://www.youtube.com/watch?v=7CqJlxBYj-M"
+
+  - id: deployment
+    label: "🚀 Deployment & DevOps"
+    resources:
+      - title: "Deploy Full Stack App"
+        type: Video
         url: "https://www.youtube.com/watch?v=71wSzpLyW9k"
 
+  - id: advanced
+    label: "🧠 Advanced Topics"
+    resources:
+      - title: "Advanced Web Dev Concepts"
+        type: Article
+        url: "https://roadmap.sh/full-stack"
+
+  # ── Branch nodes: Fundamentals ──
+  - id: html
+    label: "HTML"
+  - id: css
+    label: "CSS (Flexbox, Grid)"
+  - id: js
+    label: "JavaScript (ES6+)"
+  - id: git
+    label: "Git & GitHub"
+  - id: devtools
+    label: "Browser DevTools"
+  - id: responsive
+    label: "Responsive Design"
+
+  # ── Branch nodes: Frontend ──
+  - id: react
+    label: "React (Hooks, Components)"
+  - id: router
+    label: "Routing (React Router)"
+  - id: state
+    label: "State Management"
+  - id: tailwind
+    label: "Tailwind CSS"
+  - id: bootstrap
+    label: "Bootstrap"
+  - id: axios
+    label: "Fetch / Axios"
+
+  # ── Branch nodes: Backend ──
+  - id: nodejs
+    label: "Node.js"
+  - id: express
+    label: "Express.js"
+  - id: restapi
+    label: "REST API Design"
+  - id: jwt
+    label: "Authentication (JWT)"
+  - id: middleware
+    label: "Middleware"
+  - id: django
+    label: "Django (Alternative)"
+
+  # ── Branch nodes: Database ──
+  - id: mysql
+    label: "MySQL"
+  - id: postgres
+    label: "PostgreSQL"
+  - id: mongodb
+    label: "MongoDB"
+  - id: redis
+    label: "Redis (Caching)"
+
+  # ── Branch nodes: Full-Stack ──
+  - id: connect
+    label: "Connect Frontend + Backend"
+  - id: crud
+    label: "CRUD Operations"
+  - id: authsys
+    label: "Authentication System"
+  - id: errorhandling
+    label: "Error Handling"
+
+  # ── Branch nodes: Deployment ──
+  - id: gitdeploy
+    label: "Git & GitHub"
+  - id: docker
+    label: "Docker"
+  - id: vercel
+    label: "Vercel (Frontend)"
+  - id: aws
+    label: "AWS / Render (Backend)"
+
+  # ── Branch nodes: Advanced ──
+  - id: websockets
+    label: "WebSockets"
+  - id: jest
+    label: "Testing (Jest)"
+  - id: cicd
+    label: "CI/CD"
+  - id: microservices
+    label: "Microservices"
+
 edges:
-  - from: fs_basics
+  # ── Main chain (solid) ──
+  - from: fundamentals
     to: frontend
   - from: frontend
     to: backend
   - from: backend
-    to: databases
-  - from: databases
-    to: deployment_fs
+    to: database
+  - from: database
+    to: fullstack
+  - from: fullstack
+    to: deployment
+  - from: deployment
+    to: advanced
+
+  # ── Fundamentals branches (dashed = side node) ──
+  - { from: fundamentals, to: html,       style: dashed }
+  - { from: fundamentals, to: git,        style: dashed }
+  - { from: fundamentals, to: css,        style: dashed }
+  - { from: fundamentals, to: devtools,   style: dashed }
+  - { from: fundamentals, to: js,         style: dashed }
+  - { from: fundamentals, to: responsive, style: dashed }
+
+  # ── Frontend branches ──
+  - { from: frontend, to: react,     style: dashed }
+  - { from: frontend, to: tailwind,  style: dashed }
+  - { from: frontend, to: router,    style: dashed }
+  - { from: frontend, to: bootstrap, style: dashed }
+  - { from: frontend, to: state,     style: dashed }
+  - { from: frontend, to: axios,     style: dashed }
+
+  # ── Backend branches ──
+  - { from: backend, to: nodejs,     style: dashed }
+  - { from: backend, to: jwt,        style: dashed }
+  - { from: backend, to: express,    style: dashed }
+  - { from: backend, to: middleware, style: dashed }
+  - { from: backend, to: restapi,    style: dashed }
+  - { from: backend, to: django,     style: dashed }
+
+  # ── Database branches ──
+  - { from: database, to: mysql,    style: dashed }
+  - { from: database, to: mongodb,  style: dashed }
+  - { from: database, to: postgres, style: dashed }
+  - { from: database, to: redis,    style: dashed }
+
+  # ── Full-Stack branches ──
+  - { from: fullstack, to: connect,      style: dashed }
+  - { from: fullstack, to: authsys,      style: dashed }
+  - { from: fullstack, to: crud,         style: dashed }
+  - { from: fullstack, to: errorhandling, style: dashed }
+
+  # ── Deployment branches ──
+  - { from: deployment, to: gitdeploy, style: dashed }
+  - { from: deployment, to: vercel,    style: dashed }
+  - { from: deployment, to: docker,    style: dashed }
+  - { from: deployment, to: aws,       style: dashed }
+
+  # ── Advanced branches ──
+  - { from: advanced, to: websockets,   style: dashed }
+  - { from: advanced, to: cicd,         style: dashed }
+  - { from: advanced, to: jest,         style: dashed }
+  - { from: advanced, to: microservices, style: dashed }

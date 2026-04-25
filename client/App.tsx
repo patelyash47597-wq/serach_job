@@ -1,5 +1,5 @@
-import "./global.css";
 
+import "./global.css";
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -25,6 +25,7 @@ import Header from "@/components/navbar";
 import Chatbot from "./pages/chatbot";
 import CourseQuiz from "./pages/Coursequiz";
 import Progress from "./pages/Progress";
+import MachineLearning from "./pages/MachineLearning";
 
 
 const queryClient = new QueryClient();
@@ -51,7 +52,7 @@ const App = () => (
           <Route path="/fullstack" element={<FullStack />} />
           <Route path="/DataAnalyst" element={<DataAnalyst />} />
           <Route path="/DevOps" element={<DevOps />} />
-          <Route path="/ML" element={<ML />} />
+          <Route path="/machinelearning" element={<ML />} />
           <Route path="/dashboard" element={<Diary />} />
           <Route path="/scan" element={<Chatbot />} />
           <Route path="/resources" element={<CourseQuiz />} />

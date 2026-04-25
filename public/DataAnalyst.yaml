@@ -1,42 +1,185 @@
-title: Data Analyst Roadmap
+title: "📊 Data Analyst Roadmap"
 
 nodes:
+  # Main chain
   - id: da_basics
-    label: Data Analysis Basics
-    position: { x: 550, y: 100 }
+    label: "📊 Data Analysis Basics"
     resources:
       - title: "Data Analysis Fundamentals"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=rT7DgCr-3pg"
 
   - id: excel_sql
-    label: Excel & SQL
-    position: { x: 550, y: 200 }
+    label: "📋 Excel & SQL"
     resources:
       - title: "SQL Tutorial"
-        type: "Course"
+        type: Course
         url: "https://www.mode.com/sql-tutorial/"
 
   - id: visualization
-    label: Data Visualization
-    position: { x: 550, y: 300 }
+    label: "📈 Data Visualization"
     resources:
       - title: "Power BI for Beginners"
-        type: "Video"
+        type: Video
         url: "https://www.youtube.com/watch?v=AGrl-H87pRU"
 
   - id: statistics
-    label: Statistics & Analytics
-    position: { x: 550, y: 400 }
+    label: "🔢 Statistics & Analytics"
     resources:
       - title: "Statistics Fundamentals"
-        type: "Article"
+        type: Article
         url: "https://www.khanacademy.org/math/statistics-probability"
 
+  - id: python_r
+    label: "🐍 Python & R for Data"
+    resources:
+      - title: "Python for Data Analysis"
+        type: Video
+        url: "https://www.youtube.com/watch?v=r-uOLxNrNk8"
+
+  - id: ml_basics
+    label: "🤖 ML Fundamentals"
+    resources:
+      - title: "Intro to Machine Learning"
+        type: Course
+        url: "https://www.kaggle.com/learn/intro-to-machine-learning"
+
+  - id: portfolio
+    label: "🚀 Portfolio & Jobs"
+    resources:
+      - title: "Data Analyst Portfolio Guide"
+        type: Article
+        url: "https://www.datacamp.com/blog/data-analyst-portfolio"
+
+  # Branch nodes: da_basics
+  - id: what_is_da
+    label: "What is Data Analysis"
+  - id: data_types
+    label: "Data Types & Structures"
+  - id: data_lifecycle
+    label: "Data Lifecycle"
+  - id: tools_overview
+    label: "Tools Overview"
+
+  # Branch nodes: excel_sql
+  - id: excel_pivot
+    label: "Excel Pivot Tables"
+  - id: excel_formulas
+    label: "Excel Formulas"
+  - id: sql_basics
+    label: "SQL Basics (SELECT)"
+  - id: sql_joins
+    label: "SQL Joins & Subqueries"
+  - id: sql_agg
+    label: "Aggregations & GROUP BY"
+  - id: sql_advanced
+    label: "Window Functions"
+
+  # Branch nodes: visualization
+  - id: powerbi
+    label: "Power BI"
+  - id: tableau
+    label: "Tableau"
+  - id: matplotlib
+    label: "Matplotlib / Seaborn"
+  - id: dashboards
+    label: "Dashboard Design"
+
+  # Branch nodes: statistics
+  - id: descriptive
+    label: "Descriptive Stats"
+  - id: probability
+    label: "Probability"
+  - id: hypothesis
+    label: "Hypothesis Testing"
+  - id: regression
+    label: "Regression Analysis"
+
+  # Branch nodes: python_r
+  - id: pandas
+    label: "Pandas"
+  - id: numpy
+    label: "NumPy"
+  - id: r_basics
+    label: "R Basics"
+  - id: jupyter
+    label: "Jupyter Notebooks"
+
+  # Branch nodes: ml_basics
+  - id: supervised
+    label: "Supervised Learning"
+  - id: unsupervised
+    label: "Unsupervised Learning"
+  - id: sklearn
+    label: "Scikit-learn"
+  - id: model_eval
+    label: "Model Evaluation"
+
+  # Branch nodes: portfolio
+  - id: kaggle
+    label: "Kaggle Projects"
+  - id: github_portfolio
+    label: "GitHub Portfolio"
+  - id: resume
+    label: "Resume & LinkedIn"
+  - id: interviews
+    label: "Interview Prep"
+
 edges:
+  # Main chain
   - from: da_basics
     to: excel_sql
   - from: excel_sql
     to: visualization
   - from: visualization
     to: statistics
+  - from: statistics
+    to: python_r
+  - from: python_r
+    to: ml_basics
+  - from: ml_basics
+    to: portfolio
+
+  # da_basics branches
+  - { from: da_basics, to: what_is_da,     style: dashed }
+  - { from: da_basics, to: data_types,     style: dashed }
+  - { from: da_basics, to: data_lifecycle, style: dashed }
+  - { from: da_basics, to: tools_overview, style: dashed }
+
+  # excel_sql branches
+  - { from: excel_sql, to: excel_pivot,    style: dashed }
+  - { from: excel_sql, to: sql_basics,     style: dashed }
+  - { from: excel_sql, to: excel_formulas, style: dashed }
+  - { from: excel_sql, to: sql_joins,      style: dashed }
+  - { from: excel_sql, to: sql_agg,        style: dashed }
+  - { from: excel_sql, to: sql_advanced,   style: dashed }
+
+  # visualization branches
+  - { from: visualization, to: powerbi,    style: dashed }
+  - { from: visualization, to: tableau,    style: dashed }
+  - { from: visualization, to: matplotlib, style: dashed }
+  - { from: visualization, to: dashboards, style: dashed }
+
+  # statistics branches
+  - { from: statistics, to: descriptive, style: dashed }
+  - { from: statistics, to: probability, style: dashed }
+  - { from: statistics, to: hypothesis,  style: dashed }
+  - { from: statistics, to: regression,  style: dashed }
+
+  # python_r branches
+  - { from: python_r, to: pandas,  style: dashed }
+  - { from: python_r, to: numpy,   style: dashed }
+  - { from: python_r, to: r_basics, style: dashed }
+  - { from: python_r, to: jupyter, style: dashed }
+
+  # ml_basics branches
+  - { from: ml_basics, to: supervised,   style: dashed }
+  - { from: ml_basics, to: unsupervised, style: dashed }
+  - { from: ml_basics, to: sklearn,      style: dashed }
+  - { from: ml_basics, to: model_eval,   style: dashed }
+
+  # portfolio branches
+  - { from: portfolio, to: kaggle,           style: dashed }
+  - { from: portfolio, to: github_portfolio, style: dashed }
+  - { from: portfolio, to: resume,           style: dashed }
+  - { from: portfolio, to: interviews,       style: dashed }

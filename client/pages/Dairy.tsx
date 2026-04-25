@@ -296,11 +296,11 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
         <div className="min-h-screen bg-[#111827] font-sans p-4 md:p-8">
             <div className="max-w-4xl mx-auto">
                 <header className="text-center mb-10">
-                    <h1 className="text-4xl font-extrabold text-purple-700 flex items-center justify-center gap-3">
+                    <h1 className="text-4xl font-extrabold text-[#2DD4BF] flex items-center justify-center gap-3">
                         <BookOpen className="w-8 h-8 text-pink-500" />
                         Multilingual Mood Journal
                     </h1>
-                    <p className="text-gray-500 mt-2">
+                    <p className="text-gray-300 mt-2">
                         Write, analyze your mood, and save in any language.
                     </p>
                 </header>
@@ -317,7 +317,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
 
                 {/* New Entry Form */}
                 <div className="bg-[#1F2937] p-6 md:p-8 rounded-2xl shadow-lg border border-white/10 mb-10">
-                    <h2 className="text-2xl font-semibold mb-5 text-gray-700 border-b pb-3 flex items-center gap-2">
+                    <h2 className="text-2xl font-semibold mb-5 text-gray-100 border-b border-gray-600 pb-3 flex items-center gap-2">
                         <Zap className="w-6 h-6 text-pink-500" /> New Reflection
                     </h2>
 
@@ -326,7 +326,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                         placeholder="Entry Title (Optional)"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        className="w-full p-3 border border-gray-300 rounded-xl mb-4 focus:ring-purple-500 focus:border-purple-500"
+                        className="w-full p-3 border border-gray-600 bg-[#111827] text-white rounded-xl mb-4 focus:ring-[#6366F1] focus:ring-2 focus:border-[#6366F1]"
                     />
 
                     <div className="flex gap-4 mb-4">
@@ -335,13 +335,13 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                             value={text}
                             onChange={(e) => setText(e.target.value)}
                             rows={7}
-                            className="flex-grow p-3 border border-gray-300 rounded-xl focus:ring-purple-500 focus:border-purple-500 resize-none"
+                            className="flex-grow p-3 border border-gray-600 bg-[#111827] text-white rounded-xl focus:ring-[#6366F1] focus:ring-2 focus:border-[#6366F1] resize-none"
                         />
                         <button
                             onClick={handleVoiceInput}
                             className={`flex-shrink-0 w-16 rounded-xl shadow-lg flex items-center justify-center ${isListening
-                                    ? "bg-red-500 hover:bg-red-600 text-white animate-pulse"
-                                    : "bg-pink-500 hover:bg-pink-600 text-white"
+                                ? "bg-red-500 hover:bg-red-600 text-white animate-pulse"
+                                : "bg-pink-500 hover:bg-pink-600 text-white"
                                 }`}
                             title={`Click to ${isListening ? "STOP" : "START"
                                 } Voice Typing in ${languageOptions.find((l) => l.code === selectedLanguage)?.name ||
@@ -356,7 +356,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                         <div className="flex items-center gap-3">
                             <label
                                 htmlFor="language-select"
-                                className="text-gray-600 font-medium whitespace-nowrap flex items-center gap-1"
+                                className="text-gray-100 font-medium whitespace-nowrap flex items-center gap-1"
                             >
                                 <Globe className="w-5 h-5 text-blue-500" /> Language:
                             </label>
@@ -364,7 +364,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                                 id="language-select"
                                 value={selectedLanguage}
                                 onChange={(e) => setSelectedLanguage(e.target.value)}
-                                className="p-2 border border-purple-300 rounded-lg"
+                                className="p-2 border border-gray-600 bg-[#111827] text-white rounded-lg focus:ring-[#6366F1]"
                             >
                                 {languageOptions.map((lang) => (
                                     <option key={lang.code} value={lang.code}>
@@ -387,7 +387,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
 
                 {/* Entry History */}
                 <div>
-                    <h2 className="text-2xl font-semibold text-gray-700 border-b pb-3 mb-6">
+                    <h2 className="text-2xl font-semibold text-gray-100 border-b border-gray-600 pb-3 mb-6">
                         Past Reflections ({entries.length})
                     </h2>
 
@@ -406,7 +406,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                                     className="bg-[#1F2937] p-5 rounded-xl shadow border border-white/10 hover:shadow-lg transition-all"
                                 >
                                     <div className="flex justify-between items-start mb-2">
-                                        <h3 className="text-xl font-bold text-gray-800 line-clamp-1">
+                                        <h3 className="text-xl font-bold text-gray-300 line-clamp-1">
                                             {entry.title}
                                         </h3>
                                         <button
@@ -418,7 +418,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                                         </button>
                                     </div>
 
-                                    <p className="text-gray-600 mb-3 text-sm italic whitespace-pre-wrap">
+                                    <p className="text-gray-400 mb-3 text-sm italic whitespace-pre-wrap">
                                         {entry.text}
                                     </p>
 
@@ -432,7 +432,7 @@ const Diary: React.FC<Props> = ({ accountPassword }) => {
                                                 {getMoodIcon(entry.analysis.moodScore)}
                                                 Mood: {entry.analysis.moodScore}/10
                                             </span>
-                                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-100 text-blue-700 font-semibold">
+                                            <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#6366F1] text-white font-semibold">
                                                 <Globe className="w-3 h-3" />
                                                 {entry.analysis.language.toUpperCase()}
                                             </span>

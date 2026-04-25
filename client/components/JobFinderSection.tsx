@@ -71,45 +71,50 @@ export const JobFinderSection: React.FC = () => {
       </h2>
 
       {/* Search */}
-      <div className="mb-10 flex flex-col md:flex-row items-center gap-4 w-full">
-        <div className="relative w-full md:w-[80%]">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2DD4BF] w-5 h-5" />
-          <input
-            type="text"
-            placeholder="Type a job title..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+      <div className="mb-10 w-full">
+        <div className="flex flex-col md:flex-row items-center gap-4 w-full">
+
+          <div className="relative flex-1 w-full">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2DD4BF] w-5 h-5" />
+
+            <input
+              type="text"
+              placeholder="Type a job title..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+              className="
+          w-full pl-12 pr-4 py-3 rounded-xl
+          bg-[#1F2937]
+          text-white
+          border border-white/10
+          shadow-[0_0_15px_rgba(45,212,191,0.15)]
+          focus:outline-none
+          focus:ring-2 focus:ring-[#2DD4BF]
+          transition-all
+        "
+            />
+          </div>
+
+          <button
+            onClick={handleSearch}
+            disabled={loading}
             className="
-              w-full pl-12 pr-4 py-3 rounded-xl
-              bg-[#1F2937]
-              text-white
-              border border-white/10
-              shadow-[0_0_15px_rgba(45,212,191,0.15)]
-              focus:outline-none
-              focus:ring-2 focus:ring-[#2DD4BF]
-              transition-all
-            "
-          />
+        w-full md:w-auto px-6 py-3
+        bg-[#6366F1]
+        text-white rounded-xl font-semibold
+        shadow-[0_0_20px_#6366F1]
+        hover:bg-[#4F46E5]
+        transition-all
+        disabled:opacity-50 disabled:cursor-not-allowed
+      "
+          >
+            {loading ? "Searching..." : "Search"}
+          </button>
+
         </div>
 
-        <button
-          onClick={handleSearch}
-          disabled={loading}
-          className="
-            w-full md:w-auto px-6 py-3
-            bg-[#6366F1]
-            text-white rounded-xl font-semibold
-            shadow-[0_0_20px_#6366F1]
-            hover:bg-[#4F46E5]
-            transition-all
-            disabled:opacity-50 disabled:cursor-not-allowed
-          "
-        >
-          {loading ? "Searching..." : "Search"}
-        </button>
       </div>
-
       {error && <p className="text-red-400 mb-6">{error}</p>}
 
       {loading && !error ? (

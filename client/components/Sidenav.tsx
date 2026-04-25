@@ -88,7 +88,7 @@ bg-[#111827]"
             {profile?.name || "User"}
           </h2>
           <p className="text-sm text-gray-400"></p>
-          <p className="text-xs mt-1 text-gray-500 italic">
+          <p className="text-xs mt-1 text-gray-500 ">
             {profile?.country || "Not added"}
           </p>
 
@@ -118,21 +118,21 @@ transition flex items-center justify-center gap-2"
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="mt-8 space-y-4">
-          <Section title="Skills">
-            <BadgeList list={profile?.skills} color="indigo" />
+        <div className="mt-8 space-y-4  ">
+          <Section  title="Skills">
+            <BadgeList list={profile?.skills}  />
           </Section>
 
           <Section title="Completed Jobs">
-            <EmojiList list={profile?.jobs} emoji="💼" />
+            <BadgeList list={profile?.jobs} emoji="💼" />
           </Section>
 
           <Section title="Achievements">
-            <EmojiList list={profile?.achievements} emoji="🏆" />
+            <BadgeList list={profile?.achievements} emoji="🏆" />
           </Section>
 
           <Section title="Projects">
-            <EmojiList list={profile?.projects} emoji="🚀" />
+            <BadgeList list={profile?.projects} emoji="🚀" />
           </Section>
         </div>
       </motion.aside>
@@ -167,7 +167,7 @@ shadow-[0_0_20px_rgba(45,212,191,0.1)]
 );
 
 const BadgeList = ({ list, color }: any) => (
-  <div className="flex flex-wrap   gap-3">
+  <div className="flex flex-wrap  gap-3">
     {(list || []).length > 0 ? (
       list.map((item: string, i: number) => (
         <span
@@ -283,79 +283,99 @@ function EditProfileModal({ user, profile, close }: any) {
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="bg-white/90 backdrop-blur-xl border border-white/40 shadow-2xl rounded-2xl p-8 w-[440px]"
+        className="w-[460px] p-8 rounded-3xl 
+  bg-gradient-to-br from-[#111827]/90 to-[#1F2937]/90 
+  backdrop-blur-xl border border-white/10 
+  shadow-[0_0_40px_rgba(99,102,241,0.25)]"
       >
-        <h2 className="text-xl font-bold mb-5 text-white text-center">
+        <h2 className="text-2xl font-bold mb-6 text-center 
+  bg-gradient-to-r from-indigo-400 to-cyan-400 
+  text-transparent bg-clip-text">
           Edit Profile
         </h2>
 
-        <div className="flex flex-col items-center mb-5">
-          <div className="w-24 h-24 rounded-full overflow-hidden shadow-md border-2 border-indigo-500 mb-3">
+        {/* PROFILE IMAGE */}
+        <div className="flex flex-col items-center mb-6">
+          <div className="w-28 h-28 rounded-full overflow-hidden 
+    border-2 border-indigo-500 shadow-lg">
             {preview ? (
-              <img src={preview} alt="Preview" className="w-full h-full object-cover" />
+              <img src={preview} className="w-full h-full object-cover" />
             ) : (
-              <div className="flex items-center justify-center w-full h-full bg-gray-200 text-gray-500">
+              <div className="flex items-center justify-center w-full h-full 
+        bg-gray-700 text-gray-300 text-3xl">
                 👤
               </div>
             )}
           </div>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            className="text-sm"
-          />
+
+          <label className="mt-3 cursor-pointer text-sm text-indigo-400 hover:text-indigo-300">
+            Change Photo
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="hidden"
+            />
+          </label>
         </div>
 
-        <div className="space-y-3">
-          <input
-            className="input text-color-black"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your Name"
-          />
-          <input
-            className="input"
-            value={country}
-            onChange={(e) => setCountry(e.target.value)}
-            placeholder="Country"
-          />
-          <textarea
-            className="input"
-            value={skills}
-            onChange={(e) => setSkills(e.target.value)}
-            placeholder="Skills"
-          />
-          <textarea
-            className="input"
-            value={jobs}
-            onChange={(e) => setJobs(e.target.value)}
-            placeholder="Completed Jobs"
-          />
-          <textarea
-            className="input"
-            value={achievements}
-            onChange={(e) => setAchievements(e.target.value)}
-            placeholder="Achievements"
-          />
-          <textarea
-            className="input"
-            value={projects}
-            onChange={(e) => setProjects(e.target.value)}
-            placeholder="Projects"
-          />
+        {/* INPUTS */}
+        <div className="space-y-4">
+          {[
+            { value: name, set: setName, placeholder: "Your Name" },
+            { value: country, set: setCountry, placeholder: "Country" },
+          ].map((field, i) => (
+            <input
+              key={i}
+              value={field.value}
+              onChange={(e) => field.set(e.target.value)}
+              placeholder={field.placeholder}
+              className="w-full px-4 py-2 rounded-xl 
+        bg-[#111827] border border-white/10 
+        text-white placeholder-gray-400
+        focus:outline-none focus:ring-2 focus:ring-indigo-500
+        transition"
+            />
+          ))}
+
+          {[
+            { value: skills, set: setSkills, placeholder: "Skills (comma separated)" },
+            { value: jobs, set: setJobs, placeholder: "Completed Jobs" },
+            { value: achievements, set: setAchievements, placeholder: "Achievements" },
+            { value: projects, set: setProjects, placeholder: "Projects" },
+          ].map((field, i) => (
+            <textarea
+              key={i}
+              value={field.value}
+              onChange={(e) => field.set(e.target.value)}
+              placeholder={field.placeholder}
+              rows={2}
+              className="w-full px-4 py-2 rounded-xl 
+        bg-[#111827] border border-white/10 
+        text-white placeholder-gray-400
+        focus:outline-none focus:ring-2 focus:ring-indigo-500
+        transition resize-none"
+            />
+          ))}
         </div>
 
+        {/* BUTTONS */}
         <div className="flex justify-end gap-3 mt-6">
           <button
             onClick={close}
-            className="px-4 py-2 bg-gray-800 rounded-lg hover:bg-gray-300 transition"
+            className="px-5 py-2 rounded-xl 
+      bg-gray-700 hover:bg-gray-600 
+      text-white transition"
           >
             Cancel
           </button>
+
           <button
             onClick={saveProfile}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
+            className="px-5 py-2 rounded-xl 
+      bg-gradient-to-r from-indigo-500 to-cyan-500 
+      hover:opacity-90 text-white font-semibold 
+      shadow-lg transition"
           >
             Save
           </button>
